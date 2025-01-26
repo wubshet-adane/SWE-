@@ -4,74 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class Memories</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .student-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        .slider-container {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            max-height: 400px;
-        }
-        .slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .slide {
-            min-width: 100%;
-            box-sizing: border-box;
-            position: relative;
-        }
-        .slide img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-        .slide-description {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-        }
-        .prev {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <script src = "javascript/javascript.js"></script>
 </head>
-<body class="bg-gray-100">
+<body>
     <!-- Navigation -->
-    <nav class="bg-blue-600 text-white py-4 shadow-md">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Class Memories</h1>
-            <ul class="flex space-x-4">
-                <li><a href="#" class="hover:underline">Home</a></li>
-                <li><a href="#" class="hover:underline">Funny</a></li>
-                <li><a href="#" class="hover:underline">Other</a></li>
+    <nav>
+        <div class="container">
+            <h1>Class Memories</h1>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Funny</a></li>
+                <li><a href="#">Other</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Slider -->
-    <div class="slider-container my-6">
+    <div class="slider-container">
         <div class="slides" id="slides">
             <div class="slide">
                 <img src="https://via.placeholder.com/1200x400" alt="Slide 1">
@@ -90,54 +40,22 @@
         <button class="nav-button next" onclick="nextSlide()">&#10095;</button>
     </div>
 
-    <main class="container mx-auto px-4 py-6">
-        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Student Card Example -->
-            <div class="student-card bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://via.placeholder.com/400x300" alt="Student Image" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h2 class="text-xl font-bold mb-2">Student Name</h2>
-                    <p class="text-sm text-gray-600 mb-2">Joined: January 2015</p>
-                    <p class="text-sm text-gray-600 mb-4">Graduated: December 2020</p>
-                    <p class="text-sm">Description: A dedicated and hardworking individual who contributed significantly to class projects and activities.</p>
+    <main class="container">
+        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+            <div class="student-card">
+                <img src="https://via.placeholder.com/400x300" alt="Student Image">
+                <div class="content">
+                    <h2>Student Name</h2>
+                    <p>Joined: January 2015</p>
+                    <p>Graduated: December 2020</p>
+                    <p>Description: A dedicated and hardworking individual who contributed significantly to class projects and activities.</p>
                 </div>
             </div>
-            <!-- Additional student cards can be duplicated and added here -->
         </section>
     </main>
 
-    <footer class="bg-blue-600 text-white py-4">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Class Memories | All Rights Reserved</p>
-        </div>
+    <footer>
+        <p>&copy; 2025 Class Memories | All Rights Reserved</p>
     </footer>
-
-    <script>
-        let currentIndex = 0;
-        const slides = document.getElementById('slides');
-        const totalSlides = slides.children.length;
-
-        function showSlide(index) {
-            if (index >= totalSlides) {
-                currentIndex = 0;
-            } else if (index < 0) {
-                currentIndex = totalSlides - 1;
-            } else {
-                currentIndex = index;
-            }
-            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
-        function nextSlide() {
-            showSlide(currentIndex + 1);
-        }
-
-        function prevSlide() {
-            showSlide(currentIndex - 1);
-        }
-
-        // Auto-slide every 5 seconds
-        setInterval(nextSlide, 5000);
-    </script>
 </body>
 </html>
